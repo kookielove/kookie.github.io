@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Vue入门</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="root">
+			<!--<h1>{{number}}</h1>插值表达式{{number}}-->
+			<!--
+				<h1 v-text="number"></h1>
+				v-text:会进行一次转义
+				v-html:不会
+			-->
+			<div @click="handleClick">{{content}}</div>
+			<!--
+				事件的调用（写在Vue实例的methods里的）：
+				=v-on:简写成@
+			-->
+	</div>
+	<!--div是Vue实例的挂载点，因为root和Vue绑定了-->
+	<!--挂载点内部的内容：模板,也可以写在template-->
+	<script>
+		//实例
+		new Vue({
+			el:"#root",
+			//template:'',模板
+			data:{
+				content:"hello"
+			},
+			methods:{
+				handleClick:function(){
+					this.content="world"
+				}
+			}
+		})
+	</script>
+</body>
+</html>

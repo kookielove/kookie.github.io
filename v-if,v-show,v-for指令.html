@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>v-if,v-show,v-for指令</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="root">
+		<!--
+				v-if=值flase:直接从DOM树中删除这个元素
+				v-show=则只是使用了display：none把他隐藏
+				v-for=用于页面上循环内容的展示,item:每一项的内容,key值提升渲染性能，值不能相同,list是你的数据
+
+		-->
+		<div v-show="show">hello world</div>
+		<button @click="handelClick">toggle</button>
+		<ul>
+			<li v-for="(item,index) of todos" :key="index">{{item.text}}</li><!--item=1,2,3-->
+		</ul>
+	</div>
+
+	<script>
+		new Vue({
+			el:"#root",
+			data:{
+				show: true,
+				todos:[
+      {text:'学习Javascript'},
+      {text:'学习Vue'},
+      {text:'整个牛项目'}
+    ]
+				
+			},
+			methods:{
+				handelClick: function(){
+					this.show = !this.show;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
